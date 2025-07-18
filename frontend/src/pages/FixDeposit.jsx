@@ -39,7 +39,7 @@ const FixDeposit = () => {
     const fetchFD = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:8080/api/fd/get-all-FD",
+          `${import.meta.env.VITE_API_URL}/api/fd/get-all-FD`,
           { account: selectedAccountId },
           { headers }
         );
@@ -57,7 +57,7 @@ const FixDeposit = () => {
     try {
       const id = fd._id;
       const response = await axios.post(
-        `http://localhost:8080/api/fd/get-FD/${id}`,
+        `${import.meta.env.VITE_API_URL}/api/fd/get-FD/${id}`,
         {},
         { headers }
       );

@@ -38,7 +38,7 @@ const AddAtm = ({ onClose, onCreated }) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/atm/add-atm",
+        `${import.meta.env.VITE_API_URL}/api/atm/add-atm`,
         { account: selectedAccountId, pin, card_type: cardType },
         { headers }
       );

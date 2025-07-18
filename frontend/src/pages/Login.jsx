@@ -39,7 +39,7 @@ const Login = () => {
       setStatus("loading");
 
       const response = await axios.post(
-        "http://localhost:8080/api/user/login",
+        `${import.meta.env.VITE_API_URL}/api/user/login`,
         values
       );
 
@@ -182,7 +182,7 @@ const Login = () => {
                   try {
                     setForgotStatus("loading");
                     const res = await axios.post(
-                      "http://localhost:8080/api/user/forgot-password",
+                      `${import.meta.env.VITE_API_URL}/api/user/forgot-password`,
                       {
                         email: forgotEmail,
                       }

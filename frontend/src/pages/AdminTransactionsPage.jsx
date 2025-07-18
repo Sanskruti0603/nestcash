@@ -17,7 +17,7 @@ const AdminTransactionsPage = () => {
     const fetchTransactions = async () => {
       try {
         const res = await axios.post(
-          "http://localhost:8080/api/admin/get-all-transactions",
+          `${import.meta.env.VITE_API_URL}/api/admin/get-all-transactions`,
           {},
           { headers }
         );
@@ -49,7 +49,7 @@ const AdminTransactionsPage = () => {
   const handleRowClick = async (txnId) => {
     try {
       const res = await axios.post(
-        `http://localhost:8080/api/account/get-transaction-byId/${txnId}`,
+        `${import.meta.env.VITE_API_URL}/api/account/get-transaction-byId/${txnId}`,
         {},
         { headers }
       );

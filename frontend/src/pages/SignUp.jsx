@@ -115,7 +115,7 @@ const SignUp = () => {
     try {
       setStatus("loading");
       const response = await axios.post(
-        "http://localhost:8080/api/user/register",
+        `${import.meta.env.VITE_API_URL}/api/user/register`,
         values
       );
       console.log(response);

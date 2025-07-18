@@ -28,7 +28,7 @@ const VerifyOtp = () => {
     try {
       setStatus("loading");
       const response = await axios.post(
-        "http://localhost:8080/api/user/verify-otp",
+        `${import.meta.env.VITE_API_URL}/api/user/verify-otp`,
         {
           otp,
           user_id,
@@ -64,7 +64,7 @@ const VerifyOtp = () => {
       setStatus("loading");
 
       await axios.post(
-        "http://localhost:8080/api/user/resend-otp",
+        `${import.meta.env.VITE_API_URL}/api/user/resend-otp`,
         { user_id },
         { headers }
       );

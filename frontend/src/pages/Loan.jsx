@@ -27,7 +27,7 @@ const Loan = () => {
     const fetchLoans = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:8080/api/loan/get-all-loans",
+          `${import.meta.env.VITE_API_URL}/api/loan/get-all-loans`,
           {},
           { headers }
         );
@@ -72,7 +72,7 @@ const Loan = () => {
     const fetchAccounts = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:8080/api/account/get-all-account",
+          `${import.meta.env.VITE_API_URL}/api/account/get-all-account`,
           {},
           { headers }
         );

@@ -31,7 +31,7 @@ const AtmCardDetails = () => {
     const fetch = async () => {
       try {
         const response = await axios.post(
-          `http://localhost:8080/api/atm/get-atm/${id}`,
+          `${import.meta.env.VITE_API_URL}/api/atm/get-atm/${id}`,
           {},
           { headers }
         );
@@ -58,7 +58,7 @@ const AtmCardDetails = () => {
 
     try {
       const response = await axios.post(
-        `http://localhost:8080/api/atm/withdrawal/${id}`,
+        `${import.meta.env.VITE_API_URL}/api/atm/withdrawal/${id}`,
         { amount, pin },
         { headers }
       );

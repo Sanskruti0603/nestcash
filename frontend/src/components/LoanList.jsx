@@ -29,7 +29,7 @@ const LoanList = () => {
     const fetchLoans = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:8080/api/loan/get-loans",
+          `${import.meta.env.VITE_API_URL}/api/loan/get-loans`,
           { account: selectedAccountId },
           { headers }
         );

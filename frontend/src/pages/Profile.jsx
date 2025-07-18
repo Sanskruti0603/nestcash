@@ -25,7 +25,7 @@ const Profile = () => {
     const fetch = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:8080/api/user/get-profile",
+          `${import.meta.env.VITE_API_URL}/api/user/get-profile`,
           {},
           { headers }
         );
@@ -40,7 +40,7 @@ const Profile = () => {
     const fetch = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:8080/api/account/get-all-account",
+          `${import.meta.env.VITE_API_URL}/api/account/get-all-account`,
           {},
           { headers }
         );

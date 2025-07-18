@@ -41,7 +41,7 @@ const LoanDetail = ({ loan, onClose }) => {
     await new Promise((res) => setTimeout(res, 3000));
     try {
       const response = await axios.post(
-        `http://localhost:8080/api/loan/pay-emi/${loan._id}`,
+        `${import.meta.env.VITE_API_URL}/api/loan/pay-emi/${loan._id}`,
         {},
         { headers }
       );
@@ -61,7 +61,7 @@ const LoanDetail = ({ loan, onClose }) => {
   const handleDeleteLoan = async () => {
     try {
       const response = await axios.delete(
-        `http://localhost:8080/api/loan/delete-loan/${loan._id}`,
+        `${import.meta.env.VITE_API_URL}/api/loan/delete-loan/${loan._id}`,
         {
           headers,
         }

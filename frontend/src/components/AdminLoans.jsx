@@ -14,7 +14,7 @@ const AdminLoans = ({ setShowLoans }) => {
     const fetchLoans = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:8080/api/admin/get-all-loans",
+          `${import.meta.env.VITE_API_URL}/api/admin/get-all-loans`,
           {},
           { headers }
         );
@@ -29,7 +29,7 @@ const AdminLoans = ({ setShowLoans }) => {
   const updateLoanStatus = async (loanId, status) => {
     try {
       const res = await axios.post(
-        `http://localhost:8080/api/admin/update-loan-status/${loanId}`,
+        `${import.meta.env.VITE_API_URL}/api/admin/update-loan-status/${loanId}`,
         { status },
         { headers }
       );

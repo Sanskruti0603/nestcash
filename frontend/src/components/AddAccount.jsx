@@ -40,7 +40,7 @@ const AddAccount = () => {
 
     try {
       const res = await axios.post(
-        "http://localhost:8080/api/account/add-account",
+        `${import.meta.env.VITE_API_URL}/api/account/add-account`,
         {
           account_type: accountType,
           amount: 0,
@@ -75,7 +75,7 @@ const AddAccount = () => {
   const handleRazorpayPayment = async (accountId, amount) => {
     try {
       const { data } = await axios.post(
-        "http://localhost:8080/api/account/add-money",
+        `${import.meta.env.VITE_API_URL}/api/account/add-money`,
         {
           account_no: accountId,
           amount,
@@ -93,7 +93,7 @@ const AddAccount = () => {
         handler: async function (response) {
           try {
             const verifyRes = await axios.post(
-              "http://localhost:8080/api/account/verify-payment",
+              `${import.meta.env.VITE_API_URL}/api/account/verify-payment`,
               {
                 razorpay_order_id: response.razorpay_order_id,
                 razorpay_payment_id: response.razorpay_payment_id,

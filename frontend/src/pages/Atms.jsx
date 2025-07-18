@@ -19,7 +19,7 @@ const Atms = () => {
     const fetcATM = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:8080/api/atm/get-atms",
+          `${import.meta.env.VITE_API_URL}/api/atm/get-atms`,
           { account: selectedAccountId },
           { headers }
         );

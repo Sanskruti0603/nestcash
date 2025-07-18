@@ -86,7 +86,7 @@ const Transactions = () => {
     const fetch = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:8080/api/account/get-all-transactions",
+          `${import.meta.env.VITE_API_URL}/api/account/get-all-transactions`,
           { account: selectedAccountId },
           { headers }
         );
@@ -126,7 +126,7 @@ const Transactions = () => {
     setShowModal(true);
     try {
       const response = await axios.post(
-        `http://localhost:8080/api/account/get-transaction-byId/${t._id}`,
+        `${import.meta.env.VITE_API_URL}/api/account/get-transaction-byId/${t._id}`,
         {},
         { headers }
       );

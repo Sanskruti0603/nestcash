@@ -28,7 +28,7 @@ const FixDepositDetail = ({ setShowModel, deposit }) => {
       setIsClaiming(true);
       const id = deposit._id;
       const response = await axios.post(
-        `http://localhost:8080/api/fd/claim-FD/${id}`,
+        `${import.meta.env.VITE_API_URL}/api/fd/claim-FD/${id}`,
         {},
         { headers }
       );

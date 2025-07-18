@@ -13,8 +13,8 @@ const UserPopup = ({ user, onClose }) => {
 
   const handleFreezeToggle = async (accountId, shouldFreeze) => {
     const endpoint = shouldFreeze
-      ? "http://localhost:8080/api/admin/freeze-account"
-      : "http://localhost:8080/api/admin/unfreeze-account";
+      ?  `${import.meta.env.VITE_API_URL}/api/admin/freeze-account`
+      : `${import.meta.env.VITE_API_URL}/api/admin/unfreeze-account`;
 
     try {
       const res = await axios.post(

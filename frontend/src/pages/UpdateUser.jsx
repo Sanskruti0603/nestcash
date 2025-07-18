@@ -22,7 +22,7 @@ const UpdateUser = () => {
     const fetchProfile = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:8080/api/user/get-profile",
+          `${import.meta.env.VITE_API_URL}/api/user/get-profile`,
           {},
           { headers }
         );
@@ -64,7 +64,7 @@ const UpdateUser = () => {
       }
 
       const response = await axios.post(
-        "http://localhost:8080/api/user/update-profile",
+        `${import.meta.env.VITE_API_URL}/api/user/update-profile`,
         values,
         { headers }
       );

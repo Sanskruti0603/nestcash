@@ -42,7 +42,7 @@ const AddFD = ({ setAddFD }) => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/fd/add-FD",
+        `${import.meta.env.VITE_API_URL}/api/fd/add-FD`,
         {
           account: selectedAccountId,
           amount,

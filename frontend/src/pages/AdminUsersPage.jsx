@@ -40,7 +40,7 @@ const AdminUsersPage = () => {
     const fetchLoans = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:8080/api/admin/get-all-loans",
+          `${import.meta.env.VITE_API_URL}/api/admin/get-all-loans`,
           {},
           { headers }
         );
@@ -56,7 +56,7 @@ const AdminUsersPage = () => {
     const fetchUsers = async () => {
       try {
         const res = await axios.post(
-          "http://localhost:8080/api/admin/get-users",
+          `${import.meta.env.VITE_API_URL}/api/admin/get-users`,
           {},
           { headers }
         );
@@ -77,7 +77,7 @@ const AdminUsersPage = () => {
         for (const user of nonAdmins) {
           try {
             const userDetails = await axios.post(
-              `http://localhost:8080/api/admin/get-user/${user._id}`,
+              `${import.meta.env.VITE_API_URL}/api/admin/get-user/${user._id}`,
               {},
               { headers }
             );
@@ -132,7 +132,7 @@ const AdminUsersPage = () => {
   const handleRowClick = async (userId) => {
     try {
       const res = await axios.post(
-        `http://localhost:8080/api/admin/get-user/${userId}`,
+        `${import.meta.env.VITE_API_URL}/api/admin/get-user/${userId}`,
         {},
         { headers }
       );

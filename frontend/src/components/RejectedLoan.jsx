@@ -22,7 +22,7 @@ const RejectedLoan = ({ setShowRejectedLoan }) => {
     const fetch = async () => {
       try {
         const response = await axios.post(
-          "http://localhost:8080/api/admin/get-all-loans",
+          `${import.meta.env.VITE_API_URL}/api/admin/get-all-loans`,
           {},
           { headers }
         );

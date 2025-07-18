@@ -25,7 +25,7 @@ const AdminDashboard = () => {
     const fetchStats = async () => {
       try {
         const res = await axios.post(
-          "http://localhost:8080/api/admin/stats",
+          `${import.meta.env.VITE_API_URL}/api/admin/stats`,
           {},
           { headers }
         );
@@ -38,7 +38,7 @@ const AdminDashboard = () => {
     const fetchUsers = async () => {
       try {
         const res = await axios.post(
-          "http://localhost:8080/api/admin/get-users",
+          `${import.meta.env.VITE_API_URL}/api/admin/get-users`,
           {},
           { headers }
         );
@@ -54,7 +54,7 @@ const AdminDashboard = () => {
     const fetchTransactions = async () => {
       try {
         const res = await axios.post(
-          "http://localhost:8080/api/admin/get-all-transactions",
+          `${import.meta.env.VITE_API_URL}/api/admin/get-all-transactions`,
           {},
           { headers }
         );
