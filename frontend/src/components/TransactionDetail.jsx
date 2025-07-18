@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 const TransactionDetail = ({ showModal, onClose, loading, transaction }) => {
   if (!showModal) return null;
+
   return (
     <>
       <div

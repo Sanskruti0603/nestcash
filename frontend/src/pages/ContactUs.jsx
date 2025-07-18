@@ -4,14 +4,13 @@ const ContactUs = () => {
   return (
     <>
       <motion.div
-        className="max-w-5xl mx-auto mt-8 mb-8 flex flex-col md:flex-row items-start gap-8 "
+        className="max-w-5xl mx-auto mt-8 mb-8 flex flex-col sm:flex-row items-start gap-8 px-4"
         initial={{ opacity: 0, x: -50 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        
-        <div className="md:w-1/2">
+        <div className="sm:w-1/2 w-full">
           <p className="font-bold text-4xl mb-4 mt-18">Contact Us</p>
           <p className="text-lg text-gray-700">
             Contact us via our email{" "}
@@ -20,22 +19,22 @@ const ContactUs = () => {
           </p>
         </div>
 
-        <div className="md:w-1/2 w-full">
+        <div className="sm:w-1/2 w-full">
           <form className="flex flex-col gap-4 bg-gray-100 p-6 rounded-xl shadow-md">
             <input
               type="text"
               placeholder="Your Name"
-              className="p-3 rounded border border-gray-300"
+              className="w-full p-3 rounded border border-gray-300"
             />
             <input
               type="email"
               placeholder="Your Email"
-              className="p-3 rounded border border-gray-300"
+              className="w-full p-3 rounded border border-gray-300"
             />
             <textarea
               placeholder="Your Message"
               rows="5"
-              className="p-3 rounded border border-gray-300"
+              className="w-full p-3 rounded border border-gray-300"
             />
             <button
               type="submit"
@@ -46,8 +45,6 @@ const ContactUs = () => {
           </form>
         </div>
       </motion.div>
-
-
     </>
   );
 };

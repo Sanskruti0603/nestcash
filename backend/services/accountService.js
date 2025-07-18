@@ -54,12 +54,10 @@ const accountService = {
         return res.status(500).json({ error: "Transaction creation failed" });
       }
     } catch (err) {
-      return res
-        .status(500)
-        .json({
-          error: "Failed to create Razorpay order",
-          detail: err.message,
-        });
+      return res.status(500).json({
+        error: "Failed to create Razorpay order",
+        detail: err.message,
+      });
     }
   },
   VerifyPayment: async (req, res) => {
@@ -129,7 +127,8 @@ const accountService = {
           user: user_id,
           account: account,
         })
-        .sort({ createdAt: -1 });
+        .sort({ createdAt: -1 })
+        .populate("account");
       // .select(
       //   "transaction_type _id user account isSuccess remark createdAt amount"
       // );

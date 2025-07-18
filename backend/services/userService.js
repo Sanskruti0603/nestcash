@@ -250,6 +250,104 @@ const userService = {
     }
   },
 
+  ForgotPassword: async (req, res) => {
+    try {
+      const { email } = req;
+
+      const user = await userModel.findOne({ email });
+      if (!user) {
+        return middleware.sendResponse(
+          res,
+          Codes.NOT_FOUND,
+          "Email not registered",
+          null
+        );
+      }
+
+      const otp = userService.generateOtp();
+
+      const htmlContent = `
+      <h2>Password Reset Request</h2>
+      <p>Hello ${user.name},</p>
+      <p>Your OTP for resetting your NestCash password is: <strong>${otp}</strong></p>
+      <p>This OTP is valid for 5 minutes.</p>
+    `;
+
+      await sendMail(
+        user.email,
+        "Reset Your Password - NestCash 🔐",
+        htmlContent
+      );
+
+      user.otp = otp;
+      user.otpExpiresAt = new Date(Date.now() + 5 * 60 * 1000);
+      await user.save();
+
+      return middleware.sendResponse(
+        res,
+        Codes.SUCCESS,
+        "OTP sent to your email",
+        {
+          user_id: user._id,
+        }
+      );
+    } catch (error) {
+      return middleware.sendResponse(
+        res,
+        Codes.INTERNAL_ERROR,
+        "Something went wrong while sending OTP",
+        null
+      );
+    }
+  },
+
+  ResetPassword: async (req, res) => {
+    try {
+      const { user_id, newPassword } = req;
+
+      if (!newPassword || newPassword.length < 6) {
+        return middleware.sendResponse(
+          res,
+          Codes.INVALID,
+          "Password must be at least 6 characters",
+          null
+        );
+      }
+
+      const user = await userModel.findById(user_id);
+      if (!user) {
+        return middleware.sendResponse(
+          res,
+          Codes.NOT_FOUND,
+          "User not found",
+          null
+        );
+      }
+
+    
+      const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+      user.password = hashedPassword;
+      user.otp = null;
+      user.otpExpiresAt = null;
+      await user.save();
+
+      return middleware.sendResponse(
+        res,
+        Codes.SUCCESS,
+        "Password reset successful!",
+        null
+      );
+    } catch (error) {
+      return middleware.sendResponse(
+        res,
+        Codes.INTERNAL_ERROR,
+        "Something went wrong while resetting password",
+        null
+      );
+    }
+  },
+
   ProfileUser: async (req, res) => {
     try {
       const { user_id } = req;

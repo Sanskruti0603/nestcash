@@ -36,7 +36,6 @@ const Transactions = () => {
   };
 
   const downloadPDF = async () => {
-    
     setStatus("loading");
     setStatusMessage("Downloading Transactions...");
 
@@ -59,7 +58,7 @@ const Transactions = () => {
     const tableRows = transactions.map((txn) => [
       txn._id.slice(-6),
       new Date(txn.createdAt).toLocaleString(),
-      txn.accountNumber || "N/A",
+      txn.account.accountNumber || "N/A",
       txn.transaction_type.toUpperCase(),
       txn.amount,
       txn.isSuccess ? "Success" : "Failed",
@@ -91,7 +90,7 @@ const Transactions = () => {
           { account: selectedAccountId },
           { headers }
         );
-
+        console.log(response.data.data);
         const data = response.data.data;
         const successFailed = [
           { name: "Success", value: data.filter((t) => t.isSuccess).length },
@@ -179,7 +178,6 @@ const Transactions = () => {
             </ResponsiveContainer>
           </div>
 
-       
           <div className="bg-white p-4 rounded-2xl shadow-lg border">
             <h3 className="text-lg font-semibold text-center text-gray-700 mb-3">
               ✅ Success vs ❌ Failed Transactions
@@ -206,7 +204,6 @@ const Transactions = () => {
           </div>
         </motion.div>
 
-        
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}

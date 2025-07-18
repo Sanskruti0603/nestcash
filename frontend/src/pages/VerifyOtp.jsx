@@ -43,7 +43,15 @@ const VerifyOtp = () => {
       if (role) localStorage.setItem("role", role);
 
       setStatus(null);
-      navigate("/dashboard");
+
+     
+      if (state?.resetPassword) {
+        navigate("/reset-password", {
+          state: { user_id: state.user_id || user_id },
+        });
+      } else {
+        navigate("/dashboard");
+      }
     } catch (error) {
       setStatus("error");
       setTimeout(() => setStatus(null), 3000);
@@ -64,8 +72,8 @@ const VerifyOtp = () => {
       setStatus(null);
       alert("A new OTP has been sent to your email.");
 
-      setCooldown(30); // Resend cooldown
-      setOtpTimer(60); // Reset OTP timer
+      setCooldown(30);
+      setOtpTimer(60);
     } catch (error) {
       setStatus("error");
       setTimeout(() => setStatus(null), 3000);
@@ -73,7 +81,6 @@ const VerifyOtp = () => {
     }
   };
 
-  // ⏱️ Handle OTP 60-second countdown
   useEffect(() => {
     if (otpTimer === 0) return;
     const interval = setInterval(() => {
@@ -88,7 +95,6 @@ const VerifyOtp = () => {
     return () => clearInterval(interval);
   }, [otpTimer]);
 
-  // ⏱️ Handle resend cooldown countdown
   useEffect(() => {
     if (cooldown === 0) return;
     const timer = setInterval(() => {

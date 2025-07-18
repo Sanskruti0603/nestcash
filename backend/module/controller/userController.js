@@ -23,6 +23,15 @@ const verifyOtp = (req, res) => {
 
   userService.VerifyOtp(request, res);
 };
+const forgotPassword = (req, res) => {
+  const request = {
+    ...req.body,
+    // user_id: req.user.id,
+  };
+  console.log(req.body);
+
+  userService.ForgotPassword(request, res);
+};
 const resendOtp = (req, res) => {
   const request = {
     ...req.body,
@@ -31,6 +40,15 @@ const resendOtp = (req, res) => {
   console.log(req.body);
 
   userService.ResendOtp(request, res);
+};
+const resetPassword = (req, res) => {
+  const request = {
+    ...req.body,
+    // user_id: req.user.id,
+  };
+  console.log(req.body);
+
+  userService.ResetPassword(request, res);
 };
 const profileUser = (req, res) => {
   const request = {
@@ -56,4 +74,6 @@ module.exports = {
   updateUser,
   verifyOtp,
   resendOtp,
+  forgotPassword,
+  resetPassword
 };

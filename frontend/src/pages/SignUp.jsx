@@ -155,9 +155,8 @@ const SignUp = () => {
       <motion.div
         className="p-6 flex flex-col justify-center w-full md:w-2/6 bg-gray-200 mt-10 rounded-xl mb-10"
         initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7 }}
-        viewport={{ once: true }}
       >
         <div className="w-full max-w-md mx-auto text-black">
           <h2 className="text-center font-bold text-3xl mb-4">Sign Up</h2>
